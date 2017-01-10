@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.ExternalStorage
 {
-    interface IDb
+    public interface IDb
     {
         int InsertMindName(MindName mindName);
         int DeleteMindName(object mindName);
