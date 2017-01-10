@@ -10,7 +10,9 @@ namespace Data.ExternalStorage
     {
         int InsertMindName(MindName mindName);
         int DeleteMindName(object mindName);
-        List<MindName> SelectAllMindName();
-        List<MindName> SelectAllMindName(object mindName);
+        List<MindName> SelectMindName();
+        List<MindName> SelectMindName(object mindName);
+        int UpdateMindName(object mindName);
+
     }
 }

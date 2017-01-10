@@ -24,15 +24,20 @@ namespace Data.ExternalStorage
             int rowsAffected = dbc.Delete<MindName>(mindName, null, 18, null);
             return rowsAffected;
         }
-        public List<MindName> SelectAllMindName()
+        public List<MindName> SelectMindName()
         {
             List<MindName> result = dbc.Select<MindName>().ToList();
             return result;
         }
-        public List<MindName> SelectAllMindName(object mindName)
+        public List<MindName> SelectMindName(object mindName)
         {
             List<MindName> result = dbc.Select<MindName>(mindName, null, true, 18, null).ToList();
             return result;
+        }
+        public int UpdateMindName(object mindName)
+        {
+            int rowsAffected = dbc.Delete<MindName>(mindName, null, 18, null);
+            return rowsAffected;
         }
     }
 }
