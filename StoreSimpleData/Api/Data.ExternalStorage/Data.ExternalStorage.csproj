@@ -67,6 +67,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQL Statements\createMindTarget.sql" />
+    <Content Include="SQL Statements\createMindReceivedData.sql" />
+    <Content Include="SQL Statements\createMindDerivedData.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

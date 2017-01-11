@@ -1,6 +1,6 @@
-﻿namespace Data.ExternalStorage.models
+﻿namespace Data.ExternalStorage
 {
-    class MindDerivedData
+    public class MindReceivedData
     {
         public int Id { get; set; }
         public int Target { get; set; }

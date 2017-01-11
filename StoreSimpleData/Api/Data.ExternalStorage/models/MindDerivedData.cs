@@ -1,11 +1,11 @@
-﻿namespace Data.ExternalStorage.models
+﻿namespace Data.ExternalStorage
 {
-    class MindReceivedData
+    public class MindDerivedData
     {
         public int Id { get; set; }
-        public int Target { get; set; }
         public string Details { get; set; }
         public string Title { get; set; }
-        public bool Approved { get; set; }
+        public float Score { get; set; }
+        public int MaxTarget { get; set; }
       }
 }
