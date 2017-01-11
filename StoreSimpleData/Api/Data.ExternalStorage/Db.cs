@@ -36,9 +36,7 @@ namespace Data.ExternalStorage
         }
         public int UpdateMindName(object mindName)
         {
-            string updatePart = typeof(MindName).GetUpdateClause(
-                          (p) => (new string[] { "Id", "Name"}.Contains(p.Name))
-                          );
+            string updatePart = typeof(MindName).GetUpdateClause((p) => (new string[] { "Id", "Name"}.Contains(p.Name)));
             int rowsAffected = dbc.Execute(Statements<MindName>.GetUpdate(updatePart, @"Id=@Id"), mindName , null);
             return rowsAffected;
         }
