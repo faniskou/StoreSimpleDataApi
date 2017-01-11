@@ -1,7 +1,4 @@
-﻿USE [MyNBGIntranet]
-GO
-
-/****** Object:  Table [dbo].[MindDerivedData]    Script Date: 11/1/2017 2:47:26 μμ ******/
+﻿/****** Object:  Table [dbo].[MindDerivedData]    Script Date: 11/1/2017 2:47:26 μμ ******/
 DROP TABLE [dbo].[MindDerivedData]
 GO
 
