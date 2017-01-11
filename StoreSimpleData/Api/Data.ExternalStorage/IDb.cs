@@ -8,10 +8,10 @@ namespace Data.ExternalStorage
 {
     public interface IDb
     {
-        int InsertMindName(MindName mindName);
-        int DeleteMindName(object mindName);
-        List<MindName> SelectMindName();
-        List<MindName> SelectMindName(object mindName);
-        int UpdateMindName(object mindName);
+        int InsertMindTarget(MindTarget MindTarget);
+        int DeleteMindTarget(object MindTarget);
+        List<MindTarget> SelectMindTarget();
+        List<MindTarget> SelectMindTarget(object MindTarget);
+        int UpdateMindTarget(object MindTarget);
     }
 }

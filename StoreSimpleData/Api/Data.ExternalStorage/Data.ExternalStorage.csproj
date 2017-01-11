@@ -58,7 +58,9 @@
   <ItemGroup>
     <Compile Include="Db.cs" />
     <Compile Include="IDb.cs" />
-    <Compile Include="models\MindName.cs" />
+    <Compile Include="models\MindTarget.cs" />
+    <Compile Include="models\MindDerivedData.cs" />
+    <Compile Include="models\MindReceivedData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

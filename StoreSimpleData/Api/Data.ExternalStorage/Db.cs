@@ -14,30 +14,30 @@ namespace Data.ExternalStorage
         {
             dbc = new SqlConnection(ConnectionString);
         }
-        public int InsertMindName(MindName mindName)
+        public int InsertMindTarget(MindTarget MindTarget)
         {
-            int rowsAffected = dbc.Insert<MindName>(mindName, null, 18, null);
+            int rowsAffected = dbc.Insert<MindTarget>(MindTarget, null, 18, null);
             return rowsAffected;
         }
-        public int DeleteMindName(object mindName)
+        public int DeleteMindTarget(object MindTarget)
         {
-            int rowsAffected = dbc.Delete<MindName>(mindName, null, 18, null);
+            int rowsAffected = dbc.Delete<MindTarget>(MindTarget, null, 18, null);
             return rowsAffected;
         }
-        public List<MindName> SelectMindName()
+        public List<MindTarget> SelectMindTarget()
         {
-            List<MindName> result = dbc.Select<MindName>().ToList();
+            List<MindTarget> result = dbc.Select<MindTarget>().ToList();
             return result;
         }
-        public List<MindName> SelectMindName(object mindName)
+        public List<MindTarget> SelectMindTarget(object MindTarget)
         {
-            List<MindName> result = dbc.Select<MindName>(mindName, null, true, 18, null).ToList();
+            List<MindTarget> result = dbc.Select<MindTarget>(MindTarget, null, true, 18, null).ToList();
             return result;
         }
-        public int UpdateMindName(object mindName)
+        public int UpdateMindTarget(object MindTarget)
         {
-            string updatePart = typeof(MindName).GetUpdateClause((p) => (new string[] { "Id", "Name"}.Contains(p.Name)));
-            int rowsAffected = dbc.Execute(Statements<MindName>.GetUpdate(updatePart, @"Id=@Id"), mindName , null);
+            string updatePart = typeof(MindTarget).GetUpdateClause((p) => (new string[] { "Id", "Target"}.Contains(p.Name)));
+            int rowsAffected = dbc.Execute(Statements<MindTarget>.GetUpdate(updatePart, @"Id=@Id"), MindTarget , null);
             return rowsAffected;
         }
     }
