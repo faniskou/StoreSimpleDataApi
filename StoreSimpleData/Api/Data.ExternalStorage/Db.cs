@@ -36,7 +36,10 @@ namespace Data.ExternalStorage
         }
         public int UpdateMindName(object mindName)
         {
-            int rowsAffected = dbc.Delete<MindName>(mindName, null, 18, null);
+            string updatePart = typeof(MindName).GetUpdateClause(
+                          (p) => (new string[] { "Id", "Name"}.Contains(p.Name))
+                          );
+            int rowsAffected = dbc.Execute(Statements<MindName>.GetUpdate(updatePart, @"Id=@Id"), mindName , null);
             return rowsAffected;
         }
     }

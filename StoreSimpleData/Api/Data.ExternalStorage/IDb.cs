@@ -13,6 +13,5 @@ namespace Data.ExternalStorage
         List<MindName> SelectMindName();
         List<MindName> SelectMindName(object mindName);
         int UpdateMindName(object mindName);
-
     }
 }
