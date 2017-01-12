@@ -41,6 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoreSimpleData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StoreSimpleData.Interfaces\StoreSimpleData.Interfaces.csproj">
+      <Project>{4AA4147A-29C3-43CD-8165-FAAFBD80B7B9}</Project>
+      <Name>StoreSimpleData.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StoreSimpleData.Types\StoreSimpleData.Types.csproj">
+      <Project>{07f4e931-a9b0-4298-ae4b-82c69976c4b8}</Project>
+      <Name>StoreSimpleData.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
