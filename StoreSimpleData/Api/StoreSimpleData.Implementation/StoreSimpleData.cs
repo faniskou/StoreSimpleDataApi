@@ -68,8 +68,7 @@ namespace StoreSimpleData.Implementation
         public MindTargetsResponse SelectMindTarget()
         {
             var datas = db.SelectMindTarget();
-            MindTargetsResponse res = new MindTargetsResponse();
-            res.MindTargets = new List<Types.MindTarget>();
+            MindTargetsResponse res = new MindTargetsResponse() { MindTargets = new List<Types.MindTarget>() };
             foreach (var data in datas)
             {
                 Types.MindTarget d = new Types.MindTarget { Id = data.Id, Target = data.Target };
@@ -80,7 +79,14 @@ namespace StoreSimpleData.Implementation
 
         public MindTargetsResponse SelectMindTarget(object MindTarget)
         {
-            throw new NotImplementedException();
+            var datas = db.SelectMindTarget(MindTarget);
+            MindTargetsResponse res = new MindTargetsResponse() { MindTargets = new List<Types.MindTarget>() };
+            foreach (var data in datas)
+            {
+                Types.MindTarget d = new Types.MindTarget { Id = data.Id, Target = data.Target };
+                res.MindTargets.Add(d);
+            }
+            return res;
         }
 
         public AffectedResponse UpdateMindDerivedData(object MindDerivedData)

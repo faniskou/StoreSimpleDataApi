@@ -27,6 +27,12 @@ namespace StoreSimpleData.Controllers
         {
             return service.SelectMindTarget();
         }
+        [ActionName("selectMindTarget")]
+        [HttpPost]
+        public Types.MindTargetsResponse SelectMindTarget(Types.MindTarget inp)
+        {
+            return service.SelectMindTarget(inp);
+        }
 
     }
 }
