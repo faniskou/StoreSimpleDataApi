@@ -5,3 +5,5 @@ Connect to a database through
 key="Dbcon" value=""
 
 Run the sql scripts to create the Tables and run the Project
+
+go to /swagger to see all the calls
