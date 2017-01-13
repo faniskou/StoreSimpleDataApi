@@ -33,7 +33,7 @@ namespace StoreData45
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "{controller}/{action}"
-                , defaults: new { action = "hello" }
+                , defaults: new { controller="test", action = "hello"  }
             );
         }
     }

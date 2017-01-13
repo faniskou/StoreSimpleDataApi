@@ -9,5 +9,11 @@ namespace StoreData45.Controllers
         {
             return "testok";
         }
+        [HttpGet]
+        public IHttpActionResult hello()
+        {
+            System.Uri Location = new System.Uri(Request.RequestUri.AbsoluteUri + "./swagger");
+            return Redirect(Location);
+        }
     }
 }
