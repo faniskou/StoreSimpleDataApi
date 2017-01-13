@@ -1,7 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using SimpleInjector;
+using SimpleInjector.Integration.WebApi;
+using StoreSimpleData.Interfaces;
+using StoreSimpleData.Implementation;
+using System.Configuration;
 
 namespace StoreData45
 {
@@ -10,14 +12,28 @@ namespace StoreData45
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            var container = new Container();
+            container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+
+            // Register your types, for instance using the scoped lifestyle:
+            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
+            container.Register<IStoreSimpleData>(() => new StoreSimpleData.Implementation.StoreSimpleData(dbcon));
+
+            // This is an extension method from the integration package.
+            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
+
+            container.Verify();
+
+            GlobalConfiguration.Configuration.DependencyResolver =
+                new SimpleInjectorWebApiDependencyResolver(container);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "{controller}/{action}"
+                , defaults: new { action = "hello" }
             );
         }
     }

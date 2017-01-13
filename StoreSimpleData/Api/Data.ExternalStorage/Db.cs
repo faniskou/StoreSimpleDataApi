@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using bUtility.Dapper;
+
 using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
@@ -17,12 +18,12 @@ namespace Data.ExternalStorage
         //mindTarget
         public int InsertMindTarget(MindTarget MindTarget)
         {
-            int rowsAffected = dbc.Insert<MindTarget>(MindTarget, null, 18, null);
+            int rowsAffected = dbc.Insert<MindTarget>(MindTarget);
             return rowsAffected;
         }
         public int DeleteMindTarget(object MindTarget)
         {
-            int rowsAffected = dbc.Delete<MindTarget>(MindTarget, null, 18, null);
+            int rowsAffected = dbc.Delete<MindTarget>(MindTarget);
             return rowsAffected;
         }
         public List<MindTarget> SelectMindTarget()
@@ -32,7 +33,7 @@ namespace Data.ExternalStorage
         }
         public List<MindTarget> SelectMindTarget(object MindTarget)
         {
-            List<MindTarget> result = dbc.Select<MindTarget>(MindTarget, null, true, 18, null).ToList();
+            List<MindTarget> result = dbc.Select<MindTarget>(MindTarget).ToList();
             return result;
         }
         public int UpdateMindTarget(object MindTarget)
@@ -44,12 +45,12 @@ namespace Data.ExternalStorage
         //mindReceivedData
         public int InsertMindReceivedData(MindReceivedData MindReceivedData)
         {
-            int rowsAffected = dbc.Insert<MindReceivedData>(MindReceivedData, null, 18, null);
+            int rowsAffected = dbc.Insert<MindReceivedData>(MindReceivedData);
             return rowsAffected;
         }
         public int DeleteMindReceivedData(object MindReceivedData)
         {
-            int rowsAffected = dbc.Delete<MindReceivedData>(MindReceivedData, null, 18, null);
+            int rowsAffected = dbc.Delete<MindReceivedData>(MindReceivedData);
             return rowsAffected;
         }
         public List<MindReceivedData> SelectMindReceivedData()
@@ -59,7 +60,7 @@ namespace Data.ExternalStorage
         }
         public List<MindReceivedData> SelectMindReceivedData(object MindReceivedData)
         {
-            List<MindReceivedData> result = dbc.Select<MindReceivedData>(MindReceivedData, null, true, 18, null).ToList();
+            List<MindReceivedData> result = dbc.Select<MindReceivedData>(MindReceivedData).ToList();
             return result;
         }
         public int UpdateMindReceivedData(object MindReceivedData)
@@ -71,12 +72,12 @@ namespace Data.ExternalStorage
         ////MindDerivedData
         public int InsertMindDerivedData(MindDerivedData MindDerivedData)
         {
-            int rowsAffected = dbc.Insert<MindDerivedData>(MindDerivedData, null, 18, null);
+            int rowsAffected = dbc.Insert<MindDerivedData>(MindDerivedData);
             return rowsAffected;
         }
         public int DeleteMindDerivedData(object MindDerivedData)
         {
-            int rowsAffected = dbc.Delete<MindDerivedData>(MindDerivedData, null, 18, null);
+            int rowsAffected = dbc.Delete<MindDerivedData>(MindDerivedData);
             return rowsAffected;
         }
         public List<MindDerivedData> SelectMindDerivedData()
@@ -86,7 +87,7 @@ namespace Data.ExternalStorage
         }
         public List<MindDerivedData> SelectMindDerivedData(object MindDerivedData)
         {
-            List<MindDerivedData> result = dbc.Select<MindDerivedData>(MindDerivedData, null, true, 18, null).ToList();
+            List<MindDerivedData> result = dbc.Select<MindDerivedData>(MindDerivedData).ToList();
             return result;
         }
         public int UpdateMindDerivedData(object MindDerivedData)

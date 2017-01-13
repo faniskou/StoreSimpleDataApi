@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,6 +45,10 @@
     <Compile Include="StoreSimpleData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data.ExternalStorage\Data.ExternalStorage.csproj">
+      <Project>{f1cfa634-a7f2-4c14-8524-6363a63de748}</Project>
+      <Name>Data.ExternalStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StoreSimpleData.Interfaces\StoreSimpleData.Interfaces.csproj">
       <Project>{4AA4147A-29C3-43CD-8165-FAAFBD80B7B9}</Project>
       <Name>StoreSimpleData.Interfaces</Name>
@@ -52,6 +57,9 @@
       <Project>{07f4e931-a9b0-4298-ae4b-82c69976c4b8}</Project>
       <Name>StoreSimpleData.Types</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

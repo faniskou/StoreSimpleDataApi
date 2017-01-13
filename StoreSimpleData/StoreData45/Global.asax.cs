@@ -11,6 +11,7 @@ namespace StoreData45
     {
         protected void Application_Start()
         {
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

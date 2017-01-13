@@ -1,16 +1,24 @@
 ﻿using System;
 using StoreSimpleData.Interfaces;
 using StoreSimpleData.Types;
+using System.Configuration;
+using Data.ExternalStorage;
+using System.Collections.Generic;
 
 namespace StoreSimpleData.Implementation
 {
-    class StoreSimpleData : IStoreSimpleData
+    public class StoreSimpleData : IStoreSimpleData
     {
+        readonly IDb db;
+        public StoreSimpleData(string dbcon)
+        {
+            db = new Db(dbcon);
+        }
         public AffectedResponse DeleteMindDerivedData(object MindDerivedData)
         {
-            throw new NotImplementedException();
+            var a = db.DeleteMindReceivedData(MindDerivedData);
+            return new AffectedResponse() {RowsAffected = a };
         }
-
         public AffectedResponse DeleteMindReceivedData(object MindReceivedData)
         {
             throw new NotImplementedException();
@@ -21,20 +29,21 @@ namespace StoreSimpleData.Implementation
             throw new NotImplementedException();
         }
 
-        public AffectedResponse InsertMindDerivedData(MindDerivedData MindDerivedData)
+        public AffectedResponse InsertMindDerivedData(Types.MindDerivedData MindDerivedData)
         {
             throw new NotImplementedException();
         }
 
-        public AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedData)
+        public AffectedResponse InsertMindReceivedData(Types.MindReceivedData MindReceivedData)
         {
             throw new NotImplementedException();
         }
 
-        public AffectedResponse InsertMindTarget(MindTarget MindTarget)
+        public AffectedResponse InsertMindTarget(Types.MindTarget MindTarget)
         {
             throw new NotImplementedException();
         }
+
 
         public MindDerivedDatasResponse SelectMindDerivedData()
         {
@@ -58,7 +67,15 @@ namespace StoreSimpleData.Implementation
 
         public MindTargetsResponse SelectMindTarget()
         {
-            throw new NotImplementedException();
+            var datas = db.SelectMindTarget();
+            MindTargetsResponse res = new MindTargetsResponse();
+            res.MindTargets = new List<Types.MindTarget>();
+            foreach (var data in datas)
+            {
+                Types.MindTarget d = new Types.MindTarget { Id = data.Id, Target = data.Target };
+                res.MindTargets.Add(d);
+            }
+            return res;
         }
 
         public MindTargetsResponse SelectMindTarget(object MindTarget)
