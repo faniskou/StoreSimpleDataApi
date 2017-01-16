@@ -27,4 +27,5 @@ namespace Data.ExternalStorage
         int UpdateMindDerivedData(object MindDerivedData);
 
     }
+
 }

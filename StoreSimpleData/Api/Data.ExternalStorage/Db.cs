@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using System;
 
 namespace Data.ExternalStorage
 {
@@ -28,13 +29,18 @@ namespace Data.ExternalStorage
         }
         public List<MindTarget> SelectMindTarget()
         {
-            List<MindTarget> result = dbc.Select<MindTarget>().ToList();
-            return result;
+            return dbc.Select<MindTarget>().ToList();
         }
         public List<MindTarget> SelectMindTarget(object MindTarget)
         {
-            List<MindTarget> result = dbc.Select<MindTarget>(MindTarget).ToList();
-            return result;
+            if (MindTarget == null || IsAll1stChildsNull(MindTarget))
+            {
+                return dbc.Select<MindTarget>().ToList();
+            }
+            else
+            {
+                return dbc.Select<MindTarget>(MindTarget).ToList();
+            }
         }
         public int UpdateMindTarget(object MindTarget)
         {
@@ -55,13 +61,18 @@ namespace Data.ExternalStorage
         }
         public List<MindReceivedData> SelectMindReceivedData()
         {
-            List<MindReceivedData> result = dbc.Select<MindReceivedData>().ToList();
-            return result;
+            return dbc.Select<MindReceivedData>().ToList();
         }
         public List<MindReceivedData> SelectMindReceivedData(object MindReceivedData)
         {
-            List<MindReceivedData> result = dbc.Select<MindReceivedData>(MindReceivedData).ToList();
-            return result;
+            if (MindReceivedData == null || IsAll1stChildsNull(MindReceivedData))
+            {
+                return dbc.Select<MindReceivedData>().ToList();
+            }
+            else
+            {
+                return dbc.Select<MindReceivedData>(MindReceivedData).ToList();
+            }
         }
         public int UpdateMindReceivedData(object MindReceivedData)
         {
@@ -72,6 +83,7 @@ namespace Data.ExternalStorage
         ////MindDerivedData
         public int InsertMindDerivedData(MindDerivedData MindDerivedData)
         {
+
             int rowsAffected = dbc.Insert<MindDerivedData>(MindDerivedData);
             return rowsAffected;
         }
@@ -82,19 +94,62 @@ namespace Data.ExternalStorage
         }
         public List<MindDerivedData> SelectMindDerivedData()
         {
-            List<MindDerivedData> result = dbc.Select<MindDerivedData>().ToList();
-            return result;
+            return dbc.Select<MindDerivedData>().ToList();
         }
         public List<MindDerivedData> SelectMindDerivedData(object MindDerivedData)
         {
-            List<MindDerivedData> result = dbc.Select<MindDerivedData>(MindDerivedData).ToList();
-            return result;
+            if (MindDerivedData == null || IsAll1stChildsNull(MindDerivedData))
+            {
+                return dbc.Select<MindDerivedData>().ToList();
+            }
+            else
+            {
+                return dbc.Select<MindDerivedData>(MindDerivedData).ToList();
+            }
         }
         public int UpdateMindDerivedData(object MindDerivedData)
         {
             string updatePart = typeof(MindDerivedData).GetUpdateClause((p) => (new string[] { "Id", "Details", "Title", "Score", "MaxTarget" }.Contains(p.Name)));
             int rowsAffected = dbc.Execute(Statements<MindDerivedData>.GetUpdate(updatePart, @"Id=@Id"), MindDerivedData, null);
             return rowsAffected;
+        }
+
+
+        bool IsAll1stChildsNull(object myObject)
+        {
+            foreach (System.Reflection.PropertyInfo pi in myObject.GetType().GetProperties())
+            {
+                if (pi.PropertyType == typeof(string))
+                {
+                    string value = (string)pi.GetValue(myObject);
+                    if (value != null)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (pi != null) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        bool IsAnyNullOrEmpty(object myObject)
+        {
+            foreach (System.Reflection.PropertyInfo pi in myObject.GetType().GetProperties())
+            {
+                if (pi.PropertyType == typeof(string))
+                {
+                    string value = (string)pi.GetValue(myObject);
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

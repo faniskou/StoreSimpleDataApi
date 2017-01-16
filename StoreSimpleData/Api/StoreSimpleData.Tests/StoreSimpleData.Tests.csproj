@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="bUtility, Version=0.0.0.5, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\bUtility.0.0.0.5\lib\net45\bUtility.dll</HintPath>
+    <Reference Include="bUtility, Version=0.0.0.6, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\bUtility.0.0.0.6\lib\net45\bUtility.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="bUtility.Dapper, Version=0.0.0.8, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">

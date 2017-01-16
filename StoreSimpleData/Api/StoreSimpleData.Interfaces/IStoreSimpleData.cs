@@ -6,22 +6,22 @@ namespace StoreSimpleData.Interfaces
     public interface IStoreSimpleData
     {
         AffectedResponse InsertMindTarget(MindTarget MindTarget);
-        AffectedResponse DeleteMindTarget(object MindTarget);
+        AffectedResponse DeleteMindTarget(MindTarget MindTarget);
         MindTargetsResponse SelectMindTarget();
-        MindTargetsResponse SelectMindTarget(object MindTarget);
-        AffectedResponse UpdateMindTarget(object MindTarget);
+        MindTargetsResponse SelectMindTarget(MindTarget MindTarget);
+        AffectedResponse UpdateMindTarget(MindTarget MindTarget);
         //
         AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedData);
-        AffectedResponse DeleteMindReceivedData(object MindReceivedData);
+        AffectedResponse DeleteMindReceivedData(MindReceivedData MindReceivedData);
         MindReceivedDatasResponse SelectMindReceivedData();
-        MindReceivedDatasResponse SelectMindReceivedData(object MindReceivedData);
-        AffectedResponse UpdateMindReceivedData(object MindReceivedData);
+        MindReceivedDatasResponse SelectMindReceivedData(MindReceivedData MindReceivedData);
+        AffectedResponse UpdateMindReceivedData(MindReceivedData MindReceivedData);
         //
         AffectedResponse InsertMindDerivedData(MindDerivedData MindDerivedData);
-        AffectedResponse DeleteMindDerivedData(object MindDerivedData);
+        AffectedResponse DeleteMindDerivedData(MindDerivedData MindDerivedData);
         MindDerivedDatasResponse SelectMindDerivedData();
-        MindDerivedDatasResponse SelectMindDerivedData(object MindDerivedData);
-        AffectedResponse UpdateMindDerivedData(object MindDerivedData);
+        MindDerivedDatasResponse SelectMindDerivedData(MindDerivedData MindDerivedData);
+        AffectedResponse UpdateMindDerivedData(MindDerivedData MindDerivedData);
 
 
     }

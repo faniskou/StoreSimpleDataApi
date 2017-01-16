@@ -1,107 +1,100 @@
 ﻿using System;
 using StoreSimpleData.Interfaces;
 using StoreSimpleData.Types;
-using System.Configuration;
-using Data.ExternalStorage;
-using System.Collections.Generic;
+using System.Linq;
+using DataBS = Data.ExternalStorage;
 
 namespace StoreSimpleData.Implementation
 {
     public class StoreSimpleData : IStoreSimpleData
     {
-        readonly IDb db;
+        readonly DataBS.IDb db;
         public StoreSimpleData(string dbcon)
         {
-            db = new Db(dbcon);
+            db = new DataBS.Db(dbcon);
         }
-        public AffectedResponse DeleteMindDerivedData(object MindDerivedData)
+        public AffectedResponse DeleteMindDerivedData(MindDerivedData MindDerivedData)
         {
-            var a = db.DeleteMindReceivedData(MindDerivedData);
-            return new AffectedResponse() {RowsAffected = a };
+            return new AffectedResponse() { RowsAffected = db.DeleteMindReceivedData(MindDerivedData) };
         }
-        public AffectedResponse DeleteMindReceivedData(object MindReceivedData)
+        public AffectedResponse DeleteMindReceivedData(MindReceivedData MindReceivedData)
         {
-            throw new NotImplementedException();
+            return new AffectedResponse() { RowsAffected = db.DeleteMindReceivedData(MindReceivedData) };
+        }
+        public AffectedResponse DeleteMindTarget(MindTarget MindTarget)
+        {
+            return new AffectedResponse() { RowsAffected = db.DeleteMindTarget(MindTarget) };
         }
 
-        public AffectedResponse DeleteMindTarget(object MindTarget)
+        public AffectedResponse InsertMindDerivedData(MindDerivedData MindDerivedData)
         {
-            throw new NotImplementedException();
+            return new AffectedResponse() { RowsAffected = db.InsertMindDerivedData(ConvertItTo.DBMindDerivedData(MindDerivedData)) };
         }
 
-        public AffectedResponse InsertMindDerivedData(Types.MindDerivedData MindDerivedData)
+        public AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedData)
         {
-            throw new NotImplementedException();
+            return new AffectedResponse() { RowsAffected = db.InsertMindReceivedData(ConvertItTo.DBMindReceivedData(MindReceivedData)) };
         }
 
-        public AffectedResponse InsertMindReceivedData(Types.MindReceivedData MindReceivedData)
+        public AffectedResponse InsertMindTarget(MindTarget MindTarget)
         {
-            throw new NotImplementedException();
+            return new AffectedResponse() { RowsAffected = db.InsertMindTarget(ConvertItTo.DBMindTarget(MindTarget)) };
         }
-
-        public AffectedResponse InsertMindTarget(Types.MindTarget MindTarget)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public MindDerivedDatasResponse SelectMindDerivedData()
         {
-            throw new NotImplementedException();
+            return SelectMindDerivedData(null);
         }
 
-        public MindDerivedDatasResponse SelectMindDerivedData(object MindDerivedData)
+        public MindDerivedDatasResponse SelectMindDerivedData(MindDerivedData MindDerivedData)
         {
-            throw new NotImplementedException();
+            return new MindDerivedDatasResponse()
+            {
+                MindDerivedDatas = db.SelectMindDerivedData(MindDerivedData)
+                .Select(data => ConvertItTo.MindDerivedData(data))
+                .ToList()
+            };
         }
-
         public MindReceivedDatasResponse SelectMindReceivedData()
         {
-            throw new NotImplementedException();
+            return SelectMindReceivedData(null);
         }
 
-        public MindReceivedDatasResponse SelectMindReceivedData(object MindReceivedData)
+        public MindReceivedDatasResponse SelectMindReceivedData(MindReceivedData MindReceivedData)
         {
-            throw new NotImplementedException();
+            return new MindReceivedDatasResponse()
+            {
+                MindReceivedDatas = db.SelectMindReceivedData(MindReceivedData)
+                .Select(data => ConvertItTo.MindReceivedData(data))
+                .ToList()
+            };
         }
-
         public MindTargetsResponse SelectMindTarget()
         {
-            var datas = db.SelectMindTarget();
-            MindTargetsResponse res = new MindTargetsResponse() { MindTargets = new List<Types.MindTarget>() };
-            foreach (var data in datas)
+            return SelectMindTarget(null);
+        }
+
+        public MindTargetsResponse SelectMindTarget(MindTarget MindTarget)
+        {
+            return new MindTargetsResponse()
             {
-                Types.MindTarget d = new Types.MindTarget { Id = data.Id, Target = data.Target };
-                res.MindTargets.Add(d);
-            }
-            return res;
+                MindTargets = db.SelectMindTarget(MindTarget)
+                .Select(data => ConvertItTo.MindTarget(data))
+                .ToList()
+            };
         }
-
-        public MindTargetsResponse SelectMindTarget(object MindTarget)
+        public AffectedResponse UpdateMindDerivedData(MindDerivedData MindDerivedData)
         {
-            var datas = db.SelectMindTarget(MindTarget);
-            MindTargetsResponse res = new MindTargetsResponse() { MindTargets = new List<Types.MindTarget>() };
-            foreach (var data in datas)
-            {
-                Types.MindTarget d = new Types.MindTarget { Id = data.Id, Target = data.Target };
-                res.MindTargets.Add(d);
-            }
-            return res;
+            return new AffectedResponse() { RowsAffected = db.UpdateMindDerivedData(ConvertItTo.DBMindDerivedData(MindDerivedData)) };
         }
-
-        public AffectedResponse UpdateMindDerivedData(object MindDerivedData)
+        public AffectedResponse UpdateMindReceivedData(MindReceivedData MindReceivedData)
         {
-            throw new NotImplementedException();
+            return new AffectedResponse() { RowsAffected = db.UpdateMindReceivedData(ConvertItTo.DBMindReceivedData(MindReceivedData)) };
         }
-
-        public AffectedResponse UpdateMindReceivedData(object MindReceivedData)
+        public AffectedResponse UpdateMindTarget(MindTarget MindTarget)
         {
-            throw new NotImplementedException();
-        }
-
-        public AffectedResponse UpdateMindTarget(object MindTarget)
-        {
-            throw new NotImplementedException();
+            return new AffectedResponse() { RowsAffected = db.UpdateMindTarget(ConvertItTo.DBMindTarget(MindTarget)) };
         }
     }
 }
+
