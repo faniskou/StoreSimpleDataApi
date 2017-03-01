@@ -9,9 +9,9 @@ namespace StoreSimpleData.Implementation
         {
             return new MindTarget { Id = inp.Id, Target = inp.Target };
         }
-        internal static MindDerivedData MindDerivedData(DataBS.MindDerivedData inp)
+        internal static MindTrainedData MindTrainedData(DataBS.MindTrainedData inp)
         {
-            return new MindDerivedData { Id = inp.Id, Details=inp.Details, MaxTarget = inp.MaxTarget, Score = inp.Score , Title = inp.Title };
+            return new MindTrainedData { Id = inp.Id, Details=inp.Details, MaxTarget = inp.MaxTarget, Score = inp.Score , Title = inp.Title };
         }
         internal static MindReceivedData MindReceivedData(DataBS.MindReceivedData inp)
         {
@@ -21,9 +21,9 @@ namespace StoreSimpleData.Implementation
         {
             return new DataBS.MindTarget { Id = inp.Id ?? 0, Target = inp.Target };
         }
-        internal static DataBS.MindDerivedData DBMindDerivedData(MindDerivedData inp)
+        internal static DataBS.MindTrainedData DBMindTrainedData(MindTrainedData inp)
         {
-            return new DataBS.MindDerivedData { Id = inp.Id ?? 0, Details = inp.Details, MaxTarget = inp.MaxTarget ?? 0, Score = inp.Score ?? 0, Title = inp.Title };
+            return new DataBS.MindTrainedData { Id = inp.Id ?? 0, Details = inp.Details, MaxTarget = inp.MaxTarget ?? 0, Score = inp.Score ?? 0, Title = inp.Title };
         }
         internal static DataBS.MindReceivedData DBMindReceivedData(MindReceivedData inp)
         {

@@ -80,37 +80,37 @@ namespace Data.ExternalStorage
             int rowsAffected = dbc.Execute(Statements<MindReceivedData>.GetUpdate(updatePart, @"Id=@Id"), MindReceivedData, null);
             return rowsAffected;
         }
-        ////MindDerivedData
-        public int InsertMindDerivedData(MindDerivedData MindDerivedData)
+        ////MindTrainedData
+        public int InsertMindTrainedData(MindTrainedData MindTrainedData)
         {
 
-            int rowsAffected = dbc.Insert<MindDerivedData>(MindDerivedData);
+            int rowsAffected = dbc.Insert<MindTrainedData>(MindTrainedData);
             return rowsAffected;
         }
-        public int DeleteMindDerivedData(object MindDerivedData)
+        public int DeleteMindTrainedData(object MindTrainedData)
         {
-            int rowsAffected = dbc.Delete<MindDerivedData>(MindDerivedData);
+            int rowsAffected = dbc.Delete<MindTrainedData>(MindTrainedData);
             return rowsAffected;
         }
-        public List<MindDerivedData> SelectMindDerivedData()
+        public List<MindTrainedData> SelectMindTrainedData()
         {
-            return dbc.Select<MindDerivedData>().ToList();
+            return dbc.Select<MindTrainedData>().ToList();
         }
-        public List<MindDerivedData> SelectMindDerivedData(object MindDerivedData)
+        public List<MindTrainedData> SelectMindTrainedData(object MindTrainedData)
         {
-            if (MindDerivedData == null || IsAll1stChildsNull(MindDerivedData))
+            if (MindTrainedData == null || IsAll1stChildsNull(MindTrainedData))
             {
-                return dbc.Select<MindDerivedData>().ToList();
+                return dbc.Select<MindTrainedData>().ToList();
             }
             else
             {
-                return dbc.Select<MindDerivedData>(MindDerivedData).ToList();
+                return dbc.Select<MindTrainedData>(MindTrainedData).ToList();
             }
         }
-        public int UpdateMindDerivedData(object MindDerivedData)
+        public int UpdateMindTrainedData(object MindTrainedData)
         {
-            string updatePart = typeof(MindDerivedData).GetUpdateClause((p) => (new string[] { "Id", "Details", "Title", "Score", "MaxTarget" }.Contains(p.Name)));
-            int rowsAffected = dbc.Execute(Statements<MindDerivedData>.GetUpdate(updatePart, @"Id=@Id"), MindDerivedData, null);
+            string updatePart = typeof(MindTrainedData).GetUpdateClause((p) => (new string[] { "Id", "Details", "Title", "Score", "MaxTarget" }.Contains(p.Name)));
+            int rowsAffected = dbc.Execute(Statements<MindTrainedData>.GetUpdate(updatePart, @"Id=@Id"), MindTrainedData, null);
             return rowsAffected;
         }
 

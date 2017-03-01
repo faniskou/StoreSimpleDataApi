@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MindDerivedDatasResponse.cs" />
+    <Compile Include="MindTrainedDatasResponse.cs" />
     <Compile Include="MindReceivedDatasResponse.cs" />
     <Compile Include="MindTargetsResponse.cs" />
     <Compile Include="AffectedResponse.cs" />
-    <Compile Include="MindDerivedData.cs" />
+    <Compile Include="MindTrainedData.cs" />
     <Compile Include="MindReceivedData.cs" />
     <Compile Include="MindTarget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

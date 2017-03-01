@@ -13,9 +13,9 @@ namespace StoreSimpleData.Implementation
         {
             db = new DataBS.Db(dbcon);
         }
-        public AffectedResponse DeleteMindDerivedData(MindDerivedData MindDerivedData)
+        public AffectedResponse DeleteMindTrainedData(MindTrainedData MindTrainedData)
         {
-            return new AffectedResponse() { RowsAffected = db.DeleteMindReceivedData(MindDerivedData) };
+            return new AffectedResponse() { RowsAffected = db.DeleteMindReceivedData(MindTrainedData) };
         }
         public AffectedResponse DeleteMindReceivedData(MindReceivedData MindReceivedData)
         {
@@ -26,9 +26,9 @@ namespace StoreSimpleData.Implementation
             return new AffectedResponse() { RowsAffected = db.DeleteMindTarget(MindTarget) };
         }
 
-        public AffectedResponse InsertMindDerivedData(MindDerivedData MindDerivedData)
+        public AffectedResponse InsertMindTrainedData(MindTrainedData MindTrainedData)
         {
-            return new AffectedResponse() { RowsAffected = db.InsertMindDerivedData(ConvertItTo.DBMindDerivedData(MindDerivedData)) };
+            return new AffectedResponse() { RowsAffected = db.InsertMindTrainedData(ConvertItTo.DBMindTrainedData(MindTrainedData)) };
         }
 
         public AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedData)
@@ -41,17 +41,17 @@ namespace StoreSimpleData.Implementation
             return new AffectedResponse() { RowsAffected = db.InsertMindTarget(ConvertItTo.DBMindTarget(MindTarget)) };
         }
 
-        public MindDerivedDatasResponse SelectMindDerivedData()
+        public MindTrainedDatasResponse SelectMindTrainedData()
         {
-            return SelectMindDerivedData(null);
+            return SelectMindTrainedData(null);
         }
 
-        public MindDerivedDatasResponse SelectMindDerivedData(MindDerivedData MindDerivedData)
+        public MindTrainedDatasResponse SelectMindTrainedData(MindTrainedData MindTrainedData)
         {
-            return new MindDerivedDatasResponse()
+            return new MindTrainedDatasResponse()
             {
-                MindDerivedDatas = db.SelectMindDerivedData(MindDerivedData)
-                .Select(data => ConvertItTo.MindDerivedData(data))
+                MindTrainedDatas = db.SelectMindTrainedData(MindTrainedData)
+                .Select(data => ConvertItTo.MindTrainedData(data))
                 .ToList()
             };
         }
@@ -83,9 +83,9 @@ namespace StoreSimpleData.Implementation
                 .ToList()
             };
         }
-        public AffectedResponse UpdateMindDerivedData(MindDerivedData MindDerivedData)
+        public AffectedResponse UpdateMindTrainedData(MindTrainedData MindTrainedData)
         {
-            return new AffectedResponse() { RowsAffected = db.UpdateMindDerivedData(ConvertItTo.DBMindDerivedData(MindDerivedData)) };
+            return new AffectedResponse() { RowsAffected = db.UpdateMindTrainedData(ConvertItTo.DBMindTrainedData(MindTrainedData)) };
         }
         public AffectedResponse UpdateMindReceivedData(MindReceivedData MindReceivedData)
         {

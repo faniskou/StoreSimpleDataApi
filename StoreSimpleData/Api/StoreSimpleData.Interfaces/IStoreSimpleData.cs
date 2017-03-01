@@ -17,11 +17,11 @@ namespace StoreSimpleData.Interfaces
         MindReceivedDatasResponse SelectMindReceivedData(MindReceivedData MindReceivedData);
         AffectedResponse UpdateMindReceivedData(MindReceivedData MindReceivedData);
         //
-        AffectedResponse InsertMindDerivedData(MindDerivedData MindDerivedData);
-        AffectedResponse DeleteMindDerivedData(MindDerivedData MindDerivedData);
-        MindDerivedDatasResponse SelectMindDerivedData();
-        MindDerivedDatasResponse SelectMindDerivedData(MindDerivedData MindDerivedData);
-        AffectedResponse UpdateMindDerivedData(MindDerivedData MindDerivedData);
+        AffectedResponse InsertMindTrainedData(MindTrainedData MindTrainedData);
+        AffectedResponse DeleteMindTrainedData(MindTrainedData MindTrainedData);
+        MindTrainedDatasResponse SelectMindTrainedData();
+        MindTrainedDatasResponse SelectMindTrainedData(MindTrainedData MindTrainedData);
+        AffectedResponse UpdateMindTrainedData(MindTrainedData MindTrainedData);
 
 
     }

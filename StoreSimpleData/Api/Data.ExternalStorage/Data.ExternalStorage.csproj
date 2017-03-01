@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="bUtility, Version=0.0.0.5, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\bUtility.0.0.0.5\lib\net45\bUtility.dll</HintPath>
+    <Reference Include="bUtility, Version=0.0.0.6, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\bUtility.0.0.0.6\lib\net45\bUtility.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="bUtility.Dapper, Version=0.0.0.8, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
@@ -59,7 +59,7 @@
     <Compile Include="Db.cs" />
     <Compile Include="IDb.cs" />
     <Compile Include="models\MindTarget.cs" />
-    <Compile Include="models\MindDerivedData.cs" />
+    <Compile Include="models\MindTrainedData.cs" />
     <Compile Include="models\MindReceivedData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,7 +70,7 @@
   <ItemGroup>
     <Content Include="SQL Statements\createMindTarget.sql" />
     <Content Include="SQL Statements\createMindReceivedData.sql" />
-    <Content Include="SQL Statements\createMindDerivedData.sql" />
+    <Content Include="SQL Statements\createMindTrainedData.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

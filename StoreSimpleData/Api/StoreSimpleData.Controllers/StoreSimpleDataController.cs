@@ -45,17 +45,17 @@ namespace StoreSimpleData.Controllers
         {
             return service.SelectMindReceivedData(inp);
         }
-        [ActionName("selectMindDerivedData")]
+        [ActionName("selectMindTrainedData")]
         [HttpGet]
-        public MindDerivedDatasResponse SelectMindDerivedData()
+        public MindTrainedDatasResponse SelectMindTrainedData()
         {
-            return service.SelectMindDerivedData();
+            return service.SelectMindTrainedData();
         }
-        [ActionName("selectMindDerivedData")]
+        [ActionName("selectMindTrainedData")]
         [HttpPost]
-        public MindDerivedDatasResponse SelectMindDerivedData(MindDerivedData inp)
+        public MindTrainedDatasResponse SelectMindTrainedData(MindTrainedData inp)
         {
-            return service.SelectMindDerivedData(inp);
+            return service.SelectMindTrainedData(inp);
         }
         //inserts
         [ActionName("insertMindTarget")]
@@ -70,11 +70,11 @@ namespace StoreSimpleData.Controllers
         {
             return service.InsertMindReceivedData(MindReceivedData);
         }
-        [ActionName("insertMindDerivedData")]
+        [ActionName("insertMindTrainedData")]
         [HttpPut]
-        public AffectedResponse InsertMindDerivedData(MindDerivedData MindDerivedData)
+        public AffectedResponse InsertMindTrainedData(MindTrainedData MindTrainedData)
         {
-            return service.InsertMindDerivedData(MindDerivedData);
+            return service.InsertMindTrainedData(MindTrainedData);
         }
         //deletes
         [ActionName("deleteMindTarget")]
@@ -89,11 +89,11 @@ namespace StoreSimpleData.Controllers
         {
             return service.DeleteMindReceivedData(MindReceivedData);
         }
-        [ActionName("deleteMindDerivedData")]
+        [ActionName("deleteMindTrainedData")]
         [HttpDelete]
-        public AffectedResponse DeleteMindDerivedData(MindDerivedData MindDerivedData)
+        public AffectedResponse DeleteMindTrainedData(MindTrainedData MindTrainedData)
         {
-            return service.DeleteMindDerivedData(MindDerivedData);
+            return service.DeleteMindTrainedData(MindTrainedData);
         }
 
 

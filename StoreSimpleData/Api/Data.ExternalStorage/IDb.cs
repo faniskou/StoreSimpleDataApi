@@ -20,11 +20,11 @@ namespace Data.ExternalStorage
         List<MindReceivedData> SelectMindReceivedData(object MindReceivedData);
         int UpdateMindReceivedData(object MindReceivedData);
         //
-        int InsertMindDerivedData(MindDerivedData MindDerivedData);
-        int DeleteMindDerivedData(object MindDerivedData);
-        List<MindDerivedData> SelectMindDerivedData();
-        List<MindDerivedData> SelectMindDerivedData(object MindDerivedData);
-        int UpdateMindDerivedData(object MindDerivedData);
+        int InsertMindTrainedData(MindTrainedData MindTrainedData);
+        int DeleteMindTrainedData(object MindTrainedData);
+        List<MindTrainedData> SelectMindTrainedData();
+        List<MindTrainedData> SelectMindTrainedData(object MindTrainedData);
+        int UpdateMindTrainedData(object MindTrainedData);
 
     }
 

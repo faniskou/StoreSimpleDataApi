@@ -93,42 +93,42 @@ namespace StoreSimpleData.Tests
 
 
         [TestMethod]
-        public void ConnectToDerivedData()
+        public void ConnectToTrainedData()
         {
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
             IDb db = new Db(dbcon);
-            MindDerivedData input = new MindDerivedData() { Id = 4,  MaxTarget = 7, Details = null, Title = null, Score = 0 };
-            var a = db.DeleteMindDerivedData(input);
+            MindTrainedData input = new MindTrainedData() { Id = 4,  MaxTarget = 7, Details = null, Title = null, Score = 0 };
+            var a = db.DeleteMindTrainedData(input);
             Console.Write("Time:" + DateTime.Now + " - Deleted:" + a);
-            input = new MindDerivedData() { Id = 4, MaxTarget = 7, Details = "Test Details", Title = "Test Title", Score = 4 };
-            var b = db.InsertMindDerivedData(input);
+            input = new MindTrainedData() { Id = 4, MaxTarget = 7, Details = "Test Details", Title = "Test Title", Score = 4 };
+            var b = db.InsertMindTrainedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Inserted:" + b);
         }
         [TestMethod]
-        public void SelectDerivedData()
+        public void SelectTrainedData()
         {
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
             IDb db = new Db(dbcon);
             object input = new { Id = 4 };
-            var a = db.SelectMindDerivedData().FirstOrDefault();
+            var a = db.SelectMindTrainedData().FirstOrDefault();
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
-            var b = db.SelectMindDerivedData(input).FirstOrDefault();
+            var b = db.SelectMindTrainedData(input).FirstOrDefault();
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + b.Id + " " + b.Details);
         }
         [TestMethod]
-        public void UpdateDerivedData()
+        public void UpdateTrainedData()
         {
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
             IDb db = new Db(dbcon);
             object input = new { Id = 4, MaxTarget = 7, Details = "For Update", Title = "For Update", Score = 0 };
-            var b2 = db.UpdateMindDerivedData(input);
+            var b2 = db.UpdateMindTrainedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b2);
-            var a = db.SelectMindDerivedData(input).FirstOrDefault();
+            var a = db.SelectMindTrainedData(input).FirstOrDefault();
             input = new { Id = 4, MaxTarget = 7, Title = "Updated", Details = "Updated", Score = 0 };
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
-            var b = db.UpdateMindDerivedData(input);
+            var b = db.UpdateMindTrainedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b);
-            var c = db.SelectMindDerivedData(input).FirstOrDefault();
+            var c = db.SelectMindTrainedData(input).FirstOrDefault();
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + c.Id + " " + c.Details);
         }
     }
