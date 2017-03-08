@@ -1,6 +1,6 @@
 ﻿namespace StoreSimpleData.Types
 {
-    public class MindTrainedData : MindTrainedDataInsert
+    public class MindDelete
     {
         public int Id { get; set; }
 

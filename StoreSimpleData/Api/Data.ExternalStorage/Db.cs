@@ -19,12 +19,15 @@ namespace Data.ExternalStorage
         //mindTarget
         public int InsertMindTarget(MindTarget MindTarget)
         {
-            int rowsAffected = dbc.Insert<MindTarget>(MindTarget);
+            //  int rowsAffected = dbc.Insert<MindTarget>(MindTarget,);
+            string sqlQuery = "INSERT INTO [dbo].[MindTarget]([Target]) VALUES (@Target)";
+            int rowsAffected = dbc.Execute(sqlQuery,
+                 new { MindTarget.Target });
             return rowsAffected;
         }
         public int DeleteMindTarget(object MindTarget)
         {
-            int rowsAffected = dbc.Delete<MindTarget>(MindTarget);
+            int rowsAffected = dbc.Delete<MindTarget>(MindTarget,null,0,null,null);
             return rowsAffected;
         }
         public List<MindTarget> SelectMindTarget()
@@ -44,14 +47,17 @@ namespace Data.ExternalStorage
         }
         public int UpdateMindTarget(object MindTarget)
         {
-            string updatePart = typeof(MindTarget).GetUpdateClause((p) => (new string[] { "Id", "Target" }.Contains(p.Name)));
+            string updatePart = typeof(MindTarget).GetUpdateClause((p) => (new string[] { "Target" }.Contains(p.Name)));
             int rowsAffected = dbc.Execute(Statements<MindTarget>.GetUpdate(updatePart, @"Id=@Id"), MindTarget, null);
             return rowsAffected;
         }
         //mindTrainedData
         public int InsertMindTrainedData(MindTrainedData MindTrainedData)
         {
-            int rowsAffected = dbc.Insert<MindTrainedData>(MindTrainedData);
+            //int rowsAffected = dbc.Insert<MindTrainedData>(MindTrainedData);
+            string sqlQuery = "INSERT INTO [dbo].[MindTrainedData]([Target],[Title],[Approved],[Details]) VALUES (@Target,@Title,@Approved,@Details)";
+            int rowsAffected = dbc.Execute(sqlQuery,
+                 new { MindTrainedData.Target , MindTrainedData.Title , MindTrainedData.Approved , MindTrainedData.Details });
             return rowsAffected;
         }
         public int DeleteMindTrainedData(object MindTrainedData)
@@ -76,7 +82,7 @@ namespace Data.ExternalStorage
         }
         public int UpdateMindTrainedData(object MindTrainedData)
         {
-            string updatePart = typeof(MindTrainedData).GetUpdateClause((p) => (new string[] { "Id", "Target", "Details", "Title", "Approved" }.Contains(p.Name)));
+            string updatePart = typeof(MindTrainedData).GetUpdateClause((p) => (new string[] { "Target", "Details", "Title", "Approved" }.Contains(p.Name)));
             int rowsAffected = dbc.Execute(Statements<MindTrainedData>.GetUpdate(updatePart, @"Id=@Id"), MindTrainedData, null);
             return rowsAffected;
         }
@@ -84,7 +90,10 @@ namespace Data.ExternalStorage
         public int InsertMindReceivedData(MindReceivedData MindReceivedData)
         {
 
-            int rowsAffected = dbc.Insert<MindReceivedData>(MindReceivedData);
+            //int rowsAffected = dbc.Insert<MindReceivedData>(MindReceivedData);
+            string sqlQuery = "INSERT INTO [dbo].[MindReceivedData]([MaxTarget],[Title],[Score],[Details]) VALUES (@MaxTarget,@Title,@Score,@Details)";
+            int rowsAffected = dbc.Execute(sqlQuery,
+                 new { MindReceivedData.MaxTarget, MindReceivedData.Title, MindReceivedData.Score, MindReceivedData.Details  });
             return rowsAffected;
         }
         public int DeleteMindReceivedData(object MindReceivedData)
@@ -109,7 +118,7 @@ namespace Data.ExternalStorage
         }
         public int UpdateMindReceivedData(object MindReceivedData)
         {
-            string updatePart = typeof(MindReceivedData).GetUpdateClause((p) => (new string[] { "Id", "Details", "Title", "Score", "MaxTarget" }.Contains(p.Name)));
+            string updatePart = typeof(MindReceivedData).GetUpdateClause((p) => (new string[] { "Details", "Title", "Score", "MaxTarget" }.Contains(p.Name)));
             int rowsAffected = dbc.Execute(Statements<MindReceivedData>.GetUpdate(updatePart, @"Id=@Id"), MindReceivedData, null);
             return rowsAffected;
         }

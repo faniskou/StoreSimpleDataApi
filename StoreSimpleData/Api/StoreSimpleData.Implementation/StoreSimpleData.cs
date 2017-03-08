@@ -13,32 +13,32 @@ namespace StoreSimpleData.Implementation
         {
             db = new DataBS.Db(dbcon);
         }
-        public AffectedResponse DeleteMindReceivedData(MindReceivedData MindReceivedData)
+        public AffectedResponse DeleteMindReceivedData(MindDelete MindDelete)
         {
-            return new AffectedResponse() { RowsAffected = db.DeleteMindTrainedData(MindReceivedData) };
+            return new AffectedResponse() { RowsAffected = db.DeleteMindTrainedData(MindDelete) };
         }
-        public AffectedResponse DeleteMindTrainedData(MindTrainedData MindTrainedData)
+        public AffectedResponse DeleteMindTrainedData(MindDelete MindDelete)
         {
-            return new AffectedResponse() { RowsAffected = db.DeleteMindTrainedData(MindTrainedData) };
+            return new AffectedResponse() { RowsAffected = db.DeleteMindTrainedData(MindDelete) };
         }
-        public AffectedResponse DeleteMindTarget(MindTarget MindTarget)
+        public AffectedResponse DeleteMindTarget(MindDelete MindDelete)
         {
-            return new AffectedResponse() { RowsAffected = db.DeleteMindTarget(MindTarget) };
-        }
-
-        public AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedData)
-        {
-            return new AffectedResponse() { RowsAffected = db.InsertMindReceivedData(ConvertItTo.DBMindReceivedData(MindReceivedData)) };
+            return new AffectedResponse() { RowsAffected = db.DeleteMindTarget(MindDelete) };
         }
 
-        public AffectedResponse InsertMindTrainedData(MindTrainedData MindTrainedData)
+        public AffectedResponse InsertMindReceivedData(MindReceivedDataInsert MindReceivedDataInsert)
         {
-            return new AffectedResponse() { RowsAffected = db.InsertMindTrainedData(ConvertItTo.DBMindTrainedData(MindTrainedData)) };
+            return new AffectedResponse() { RowsAffected = db.InsertMindReceivedData(ConvertItTo.DBMindReceivedDataInsert(MindReceivedDataInsert)) };
         }
 
-        public AffectedResponse InsertMindTarget(MindTarget MindTarget)
+        public AffectedResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert)
         {
-            return new AffectedResponse() { RowsAffected = db.InsertMindTarget(ConvertItTo.DBMindTarget(MindTarget)) };
+            return new AffectedResponse() { RowsAffected = db.InsertMindTrainedData(ConvertItTo.DBMindTrainedDataInsert(MindTrainedDataInsert)) };
+        }
+
+        public AffectedResponse InsertMindTarget(MindTargetInsert MindTargetInsert)
+        {
+            return new AffectedResponse() { RowsAffected = db.InsertMindTarget(ConvertItTo.DBMindTargetInsert(MindTargetInsert)) };
         }
 
         public MindReceivedDatasResponse SelectMindReceivedData()

@@ -5,20 +5,20 @@ namespace StoreSimpleData.Interfaces
 {
     public interface IStoreSimpleData
     {
-        AffectedResponse InsertMindTarget(MindTarget MindTarget);
-        AffectedResponse DeleteMindTarget(MindTarget MindTarget);
+        AffectedResponse InsertMindTarget(MindTargetInsert MindTargetInsert);
+        AffectedResponse DeleteMindTarget(MindDelete MindDelete);
         MindTargetsResponse SelectMindTarget();
         MindTargetsResponse SelectMindTarget(MindTarget MindTarget);
         AffectedResponse UpdateMindTarget(MindTarget MindTarget);
         //
-        AffectedResponse InsertMindTrainedData(MindTrainedData MindTrainedData);
-        AffectedResponse DeleteMindTrainedData(MindTrainedData MindTrainedData);
+        AffectedResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert);
+        AffectedResponse DeleteMindTrainedData(MindDelete MindDelete);
         MindTrainedDatasResponse SelectMindTrainedData();
         MindTrainedDatasResponse SelectMindTrainedData(MindTrainedData MindTrainedData);
         AffectedResponse UpdateMindTrainedData(MindTrainedData MindTrainedData);
         //
-        AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedData);
-        AffectedResponse DeleteMindReceivedData(MindReceivedData MindReceivedData);
+        AffectedResponse InsertMindReceivedData(MindReceivedDataInsert MindReceivedDataInsert);
+        AffectedResponse DeleteMindReceivedData(MindDelete MindDelete);
         MindReceivedDatasResponse SelectMindReceivedData();
         MindReceivedDatasResponse SelectMindReceivedData(MindReceivedData MindReceivedData);
         AffectedResponse UpdateMindReceivedData(MindReceivedData MindReceivedData);

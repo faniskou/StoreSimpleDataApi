@@ -1,4 +1,8 @@
-﻿/****** Object:  Table [dbo].[MindTrainedData]    Script Date: 8/3/17 10:44:52 πμ ******/
+﻿/****** Object:  Table [dbo].[MindTrainedData]    Script Date: 8/3/17 1:56:39 μμ ******/
+DROP TABLE [dbo].[MindTrainedData]
+GO
+
+/****** Object:  Table [dbo].[MindTrainedData]    Script Date: 8/3/17 1:56:39 μμ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -6,7 +10,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[MindTrainedData](
-	[Id] [int] NULL,
+	[Id] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	[Target] [int] NULL,
 	[Details] [varchar](max) NULL,
 	[Title] [varchar](50) NULL,
@@ -14,4 +18,3 @@ CREATE TABLE [dbo].[MindTrainedData](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-

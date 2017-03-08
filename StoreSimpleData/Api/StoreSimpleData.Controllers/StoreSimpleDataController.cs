@@ -60,40 +60,59 @@ namespace StoreSimpleData.Controllers
         //inserts
         [ActionName("insertMindTarget")]
         [HttpPut]
-        public AffectedResponse InsertMindTarget(MindTarget MindTarget)
+        public AffectedResponse InsertMindTarget(MindTargetInsert MindTargetInsert)
         {
-            return service.InsertMindTarget(MindTarget);
+            return service.InsertMindTarget(MindTargetInsert);
         }
         [ActionName("insertMindTrainedData")]
         [HttpPut]
-        public AffectedResponse InsertMindTrainedData(MindTrainedData MindTrainedData)
+        public AffectedResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert)
         {
-            return service.InsertMindTrainedData(MindTrainedData);
+            return service.InsertMindTrainedData(MindTrainedDataInsert);
         }
         [ActionName("insertMindReceivedData")]
         [HttpPut]
-        public AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedData)
+        public AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedDataInsert)
+        {
+            return service.InsertMindReceivedData(MindReceivedDataInsert);
+        }
+        //update
+        [ActionName("updateMindTarget")]
+        [HttpPut]
+        public AffectedResponse UpdateMindTarget(MindTarget MindTarget)
+        {
+            return service.UpdateMindTarget(MindTarget);
+        }
+        [ActionName("updateMindTrainedData")]
+        [HttpPut]
+        public AffectedResponse UpdateMindTrainedData(MindTrainedData MindTrainedData)
+        {
+            return service.UpdateMindTrainedData(MindTrainedData);
+        }
+        [ActionName("updateMindReceivedData")]
+        [HttpPut]
+        public AffectedResponse UpdateMindReceivedData(MindReceivedData MindReceivedData)
         {
             return service.InsertMindReceivedData(MindReceivedData);
         }
         //deletes
         [ActionName("deleteMindTarget")]
         [HttpDelete]
-        public AffectedResponse DeleteMindTarget(MindTarget MindTarget)
+        public AffectedResponse DeleteMindTarget(MindDelete MindDelete)
         {
-            return service.DeleteMindTarget(MindTarget);
+            return service.DeleteMindTarget(MindDelete);
         }
         [ActionName("deleteMindTrainedData")]
         [HttpDelete]
-        public AffectedResponse DeleteMindTrainedData(MindTrainedData MindTrainedData)
+        public AffectedResponse DeleteMindTrainedData(MindDelete MindDelete)
         {
-            return service.DeleteMindTrainedData(MindTrainedData);
+            return service.DeleteMindTrainedData(MindDelete);
         }
         [ActionName("deleteMindReceivedData")]
         [HttpDelete]
-        public AffectedResponse DeleteMindReceivedData(MindReceivedData MindReceivedData)
+        public AffectedResponse DeleteMindReceivedData(MindDelete MindDelete)
         {
-            return service.DeleteMindReceivedData(MindReceivedData);
+            return service.DeleteMindReceivedData(MindDelete);
         }
 
 

@@ -1,8 +1,7 @@
 ﻿namespace StoreSimpleData.Types
 {
-    public class MindTarget  
+    public class MindTarget: MindTargetInsert
     {
-        public int? Id { get; set; }
-        public string Target { get; set; }
+        public int Id { get; set; }
     }
 }

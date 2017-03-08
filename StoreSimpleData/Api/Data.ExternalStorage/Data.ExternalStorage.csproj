@@ -30,12 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="bUtility, Version=0.0.0.6, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\bUtility.0.0.0.6\lib\net45\bUtility.dll</HintPath>
+    <Reference Include="bUtility, Version=0.0.0.7, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\bUtility.0.0.0.7\lib\net45\bUtility.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="bUtility.Dapper, Version=0.0.0.8, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\bUtility.Dapper.0.0.0.8\lib\net45\bUtility.Dapper.dll</HintPath>
+    <Reference Include="bUtility.Dapper, Version=0.0.0.11, Culture=neutral, PublicKeyToken=e2a60ca179fe72cb, processorArchitecture=MSIL">
+      <HintPath>$(SolutionDir)packages\bUtility.Dapper.0.0.0.11\lib\net45\bUtility.Dapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Dapper.StrongName, Version=1.50.2.0, Culture=neutral, PublicKeyToken=e3e8412083d25dd3, processorArchitecture=MSIL">
@@ -47,6 +47,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
