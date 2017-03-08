@@ -1,8 +1,4 @@
-﻿/****** Object:  Table [dbo].[MindTrainedData]    Script Date: 11/1/2017 2:47:26 μμ ******/
-DROP TABLE [dbo].[MindTrainedData]
-GO
-
-/****** Object:  Table [dbo].[MindTrainedData]    Script Date: 11/1/2017 2:47:26 μμ ******/
+﻿/****** Object:  Table [dbo].[MindTrainedData]    Script Date: 8/3/17 10:44:52 πμ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,12 +7,11 @@ GO
 
 CREATE TABLE [dbo].[MindTrainedData](
 	[Id] [int] NULL,
+	[Target] [int] NULL,
 	[Details] [varchar](max) NULL,
 	[Title] [varchar](50) NULL,
-	[Score] [float] NULL,
-	[MaxTarget] [int] NULL
+	[Approved] [bit] NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-
 

@@ -56,56 +56,15 @@ namespace StoreSimpleData.Tests
         {
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
             IDb db = new Db(dbcon);
-            MindReceivedData input = new MindReceivedData() { Id = 4, Target = 4, Approved=false ,Details=null,Title=null };
-            var a = db.DeleteMindReceivedData(input);
-            Console.Write("Time:" + DateTime.Now + " - Deleted:" + a);
-            input = new MindReceivedData() { Id = 4, Target = 4, Approved = false, Details = "Test Details", Title = "Test Title" };
-            var b = db.InsertMindReceivedData(input);
-            Console.Write("\nTime:" + DateTime.Now + " - Inserted:" + b);
-        }
-        [TestMethod]
-        public void SelectReceivedData()
-        {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
-            object input = new { Id = 4 };
-            var a = db.SelectMindReceivedData().FirstOrDefault();
-            Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
-            var b = db.SelectMindReceivedData(input).FirstOrDefault();
-            Console.Write("\nTime:" + DateTime.Now + " - Select:" + b.Id + " " + b.Details);
-        }
-        [TestMethod]
-        public void UpdateReceivedData()
-        {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
-            object input = new { Id = 4, Target = 4, Approved = false, Details = "For Update", Title = "For Update" };
-            var b2 = db.UpdateMindReceivedData(input);
-            Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b2);
-            var a = db.SelectMindReceivedData(input).FirstOrDefault();
-            input = new { Id = 4, Target = 4, Approved = false, Details = "Updated", Title = "For Updated" };
-            Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
-            var b = db.UpdateMindReceivedData(input);
-            Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b);
-            var c = db.SelectMindReceivedData(input).FirstOrDefault();
-            Console.Write("\nTime:" + DateTime.Now + " - Select:" + c.Id + " " + c.Details);
-        }
-
-
-        [TestMethod]
-        public void ConnectToTrainedData()
-        {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
-            MindTrainedData input = new MindTrainedData() { Id = 4,  MaxTarget = 7, Details = null, Title = null, Score = 0 };
+            MindTrainedData input = new MindTrainedData() { Id = 4, Target = 4, Approved=false ,Details=null,Title=null };
             var a = db.DeleteMindTrainedData(input);
             Console.Write("Time:" + DateTime.Now + " - Deleted:" + a);
-            input = new MindTrainedData() { Id = 4, MaxTarget = 7, Details = "Test Details", Title = "Test Title", Score = 4 };
+            input = new MindTrainedData() { Id = 4, Target = 4, Approved = false, Details = "Test Details", Title = "Test Title" };
             var b = db.InsertMindTrainedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Inserted:" + b);
         }
         [TestMethod]
-        public void SelectTrainedData()
+        public void SelectReceivedData()
         {
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
             IDb db = new Db(dbcon);
@@ -116,19 +75,60 @@ namespace StoreSimpleData.Tests
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + b.Id + " " + b.Details);
         }
         [TestMethod]
+        public void UpdateReceivedData()
+        {
+            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
+            IDb db = new Db(dbcon);
+            object input = new { Id = 4, Target = 4, Approved = false, Details = "For Update", Title = "For Update" };
+            var b2 = db.UpdateMindTrainedData(input);
+            Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b2);
+            var a = db.SelectMindTrainedData(input).FirstOrDefault();
+            input = new { Id = 4, Target = 4, Approved = false, Details = "Updated", Title = "For Updated" };
+            Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
+            var b = db.UpdateMindTrainedData(input);
+            Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b);
+            var c = db.SelectMindTrainedData(input).FirstOrDefault();
+            Console.Write("\nTime:" + DateTime.Now + " - Select:" + c.Id + " " + c.Details);
+        }
+
+
+        [TestMethod]
+        public void ConnectToTrainedData()
+        {
+            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
+            IDb db = new Db(dbcon);
+            MindReceivedData input = new MindReceivedData() { Id = 4,  MaxTarget = 7, Details = null, Title = null, Score = 0 };
+            var a = db.DeleteMindReceivedData(input);
+            Console.Write("Time:" + DateTime.Now + " - Deleted:" + a);
+            input = new MindReceivedData() { Id = 4, MaxTarget = 7, Details = "Test Details", Title = "Test Title", Score = 4 };
+            var b = db.InsertMindReceivedData(input);
+            Console.Write("\nTime:" + DateTime.Now + " - Inserted:" + b);
+        }
+        [TestMethod]
+        public void SelectTrainedData()
+        {
+            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
+            IDb db = new Db(dbcon);
+            object input = new { Id = 4 };
+            var a = db.SelectMindReceivedData().FirstOrDefault();
+            Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
+            var b = db.SelectMindReceivedData(input).FirstOrDefault();
+            Console.Write("\nTime:" + DateTime.Now + " - Select:" + b.Id + " " + b.Details);
+        }
+        [TestMethod]
         public void UpdateTrainedData()
         {
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
             IDb db = new Db(dbcon);
             object input = new { Id = 4, MaxTarget = 7, Details = "For Update", Title = "For Update", Score = 0 };
-            var b2 = db.UpdateMindTrainedData(input);
+            var b2 = db.UpdateMindReceivedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b2);
-            var a = db.SelectMindTrainedData(input).FirstOrDefault();
+            var a = db.SelectMindReceivedData(input).FirstOrDefault();
             input = new { Id = 4, MaxTarget = 7, Title = "Updated", Details = "Updated", Score = 0 };
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
-            var b = db.UpdateMindTrainedData(input);
+            var b = db.UpdateMindReceivedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b);
-            var c = db.SelectMindTrainedData(input).FirstOrDefault();
+            var c = db.SelectMindReceivedData(input).FirstOrDefault();
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + c.Id + " " + c.Details);
         }
     }

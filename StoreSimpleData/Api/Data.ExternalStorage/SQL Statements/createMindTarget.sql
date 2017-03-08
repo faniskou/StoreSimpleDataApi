@@ -1,9 +1,4 @@
-﻿
-/****** Object:  Table [dbo].[MindTarget]    Script Date: 11/1/2017 2:50:17 μμ ******/
-DROP TABLE [dbo].[MindTarget]
-GO
-
-/****** Object:  Table [dbo].[MindTarget]    Script Date: 11/1/2017 2:50:17 μμ ******/
+﻿/****** Object:  Table [dbo].[MindTarget]    Script Date: 8/3/17 10:44:13 πμ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,7 +11,5 @@ CREATE TABLE [dbo].[MindTarget](
 ) ON [PRIMARY]
 
 GO
-
-
 
 

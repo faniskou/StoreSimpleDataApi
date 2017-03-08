@@ -1,6 +1,6 @@
 ﻿namespace Data.ExternalStorage
 {
-    public class MindTrainedData
+    public class MindReceivedData
     {
         public int Id { get; set; }
         public string Details { get; set; }

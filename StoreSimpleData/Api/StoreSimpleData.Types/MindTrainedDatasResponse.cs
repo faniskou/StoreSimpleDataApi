@@ -5,7 +5,7 @@ namespace StoreSimpleData.Types
 {
     public class MindTrainedDatasResponse
     {
-        [DataMember(Name = "MindTrainedDatas")]
+        [DataMember(Name = "mindTrainedDatas")]
         public List<MindTrainedData> MindTrainedDatas { get; set; }
     }
 }

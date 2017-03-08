@@ -3,9 +3,9 @@
     public class MindTrainedData
     {
         public int? Id { get; set; }
+        public int? Target { get; set; }
         public string Details { get; set; }
         public string Title { get; set; }
-        public float? Score { get; set; }
-        public int? MaxTarget { get; set; }
+        public bool? Approved { get; set; }
       }
 }
