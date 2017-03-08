@@ -2,7 +2,7 @@
 {
     public class MindTrainedData : MindTrainedDataInsert
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
       }
 }

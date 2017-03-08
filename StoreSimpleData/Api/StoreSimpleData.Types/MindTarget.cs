@@ -2,6 +2,6 @@
 {
     public class MindTarget: MindTargetInsert
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
     }
 }
