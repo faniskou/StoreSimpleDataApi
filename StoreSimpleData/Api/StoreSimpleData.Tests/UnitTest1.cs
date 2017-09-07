@@ -3,18 +3,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Data.ExternalStorage;
 using System.Linq;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace StoreSimpleData.Tests
 {
     [TestClass]
     public class UnitTest1
     {
-
+        public static SqlConnection GetDbcon() { return new SqlConnection(ConfigurationManager.AppSettings["Dbcon"]); }
+        Func<SqlConnection> GetDb = GetDbcon;
         [TestMethod]
         public void ConnectToDatabase()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             MindTarget input = new MindTarget() { Id = 4, Target = null };
             var a = db.DeleteMindTarget(input);
             Console.Write("Time:"+ DateTime.Now + " - Deleted:" + a);
@@ -25,8 +27,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void SelectPrintFirstDatabase()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             object input = new  { Id = 4 };
             var a = db.SelectMindTarget().FirstOrDefault();
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Target);
@@ -36,8 +37,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void UpdateFirstDatabase()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             object input = new { Id = 4, Target = "For Update" };
             var b2 = db.UpdateMindTarget(input);
             Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b2);
@@ -54,8 +54,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void ConnectToReceivedData()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             MindTrainedData input = new MindTrainedData() { Id = 4, Target = 4, Approved=false ,Details=null,Title=null };
             var a = db.DeleteMindTrainedData(input);
             Console.Write("Time:" + DateTime.Now + " - Deleted:" + a);
@@ -66,8 +65,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void SelectReceivedData()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             object input = new { Id = 4 };
             var a = db.SelectMindTrainedData().FirstOrDefault();
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
@@ -77,8 +75,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void UpdateReceivedData()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             object input = new { Id = 4, Target = 4, Approved = false, Details = "For Update", Title = "For Update" };
             var b2 = db.UpdateMindTrainedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b2);
@@ -95,8 +92,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void ConnectToTrainedData()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             MindReceivedData input = new MindReceivedData() { Id = 4,  MaxTarget = 7, Details = null, Title = null, Score = 0 };
             var a = db.DeleteMindReceivedData(input);
             Console.Write("Time:" + DateTime.Now + " - Deleted:" + a);
@@ -107,8 +103,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void SelectTrainedData()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             object input = new { Id = 4 };
             var a = db.SelectMindReceivedData().FirstOrDefault();
             Console.Write("\nTime:" + DateTime.Now + " - Select:" + a.Id + " " + a.Details);
@@ -118,8 +113,7 @@ namespace StoreSimpleData.Tests
         [TestMethod]
         public void UpdateTrainedData()
         {
-            string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            IDb db = new Db(dbcon);
+            IDb db = new Db(GetDb);
             object input = new { Id = 4, MaxTarget = 7, Details = "For Update", Title = "For Update", Score = 0 };
             var b2 = db.UpdateMindReceivedData(input);
             Console.Write("\nTime:" + DateTime.Now + " - Update count:" + b2);

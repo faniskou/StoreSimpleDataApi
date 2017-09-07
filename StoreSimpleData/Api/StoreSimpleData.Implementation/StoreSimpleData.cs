@@ -8,10 +8,10 @@ namespace StoreSimpleData.Implementation
 {
     public class StoreSimpleData : IStoreSimpleData
     {
-        readonly DataBS.IDb db;
-        public StoreSimpleData(string dbcon)
+        protected readonly DataBS.IDb db;
+        public StoreSimpleData(Func<System.Data.IDbConnection> DbConnection)
         {
-            db = new DataBS.Db(dbcon);
+            db = new DataBS.Db(DbConnection);
         }
         public AffectedResponse DeleteMindReceivedData(MindDelete MindDelete)
         {
@@ -25,27 +25,22 @@ namespace StoreSimpleData.Implementation
         {
             return new AffectedResponse() { RowsAffected = db.DeleteMindTarget(MindDelete) };
         }
-
         public AffectedResponse InsertMindReceivedData(MindReceivedDataInsert MindReceivedDataInsert)
         {
             return new AffectedResponse() { RowsAffected = db.InsertMindReceivedData(ConvertItTo.DBMindReceivedDataInsert(MindReceivedDataInsert)) };
         }
-
         public AffectedResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert)
         {
             return new AffectedResponse() { RowsAffected = db.InsertMindTrainedData(ConvertItTo.DBMindTrainedDataInsert(MindTrainedDataInsert)) };
         }
-
         public AffectedResponse InsertMindTarget(MindTargetInsert MindTargetInsert)
         {
             return new AffectedResponse() { RowsAffected = db.InsertMindTarget(ConvertItTo.DBMindTargetInsert(MindTargetInsert)) };
         }
-
         public MindReceivedDatasResponse SelectMindReceivedData()
         {
             return SelectMindReceivedData(null);
         }
-
         public MindReceivedDatasResponse SelectMindReceivedData(MindReceivedData MindReceivedData)
         {
             return new MindReceivedDatasResponse()
@@ -59,7 +54,6 @@ namespace StoreSimpleData.Implementation
         {
             return SelectMindTrainedData(null);
         }
-
         public MindTrainedDatasResponse SelectMindTrainedData(MindTrainedData MindTrainedData)
         {
             return new MindTrainedDatasResponse()

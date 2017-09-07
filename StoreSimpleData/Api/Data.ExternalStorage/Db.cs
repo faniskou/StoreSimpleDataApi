@@ -11,116 +11,178 @@ namespace Data.ExternalStorage
 {
     public class Db : IDb
     {
-        private readonly IDbConnection dbc;
-        public Db(string ConnectionString)
+        // private readonly IDbConnection dbc;
+        readonly Func<System.Data.IDbConnection> DbConnection;
+        public Db(Func<System.Data.IDbConnection> dbConnection)
         {
-            dbc = new SqlConnection(ConnectionString);
+            DbConnection = dbConnection;
         }
-        //mindTarget
+        //Target
         public int InsertMindTarget(MindTarget MindTarget)
         {
-            //  int rowsAffected = dbc.Insert<MindTarget>(MindTarget,);
-            string sqlQuery = "INSERT INTO [dbo].[MindTarget]([Target]) VALUES (@Target)";
-            int rowsAffected = dbc.Execute(sqlQuery,
-                 new { MindTarget.Target });
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                string sqlQuery = "INSERT INTO [dbo].[MindTarget]([Target]) VALUES (@Target)";
+                result = dbc.Execute(sqlQuery, new { MindTarget.Target });
+            }
+            return result;
         }
         public int DeleteMindTarget(object MindTarget)
         {
-            int rowsAffected = dbc.Delete<MindTarget>(MindTarget,null,0,null,null);
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                result = dbc.Delete<MindTarget>(MindTarget, null, 0, null, null);
+            }
+            return result;
         }
         public List<MindTarget> SelectMindTarget()
         {
-            return dbc.Select<MindTarget>().ToList();
+            List<MindTarget> result;
+            using (var dbc = DbConnection())
+            {
+                result = dbc.Select<MindTarget>().ToList();
+            }
+            return result;
         }
         public List<MindTarget> SelectMindTarget(object MindTarget)
         {
-            if (MindTarget == null || IsAll1stChildsNull(MindTarget))
+            List<MindTarget> result;
+            using (var dbc = DbConnection())
             {
-                return dbc.Select<MindTarget>().ToList();
+                if (MindTarget == null || IsAll1stChildsNull(MindTarget))
+                {
+                    result = dbc.Select<MindTarget>().ToList();
+                }
+                else
+                {
+                    result = dbc.Select<MindTarget>(MindTarget).ToList();
+                }
             }
-            else
-            {
-                return dbc.Select<MindTarget>(MindTarget).ToList();
-            }
+            return result;
         }
         public int UpdateMindTarget(object MindTarget)
         {
-            string updatePart = typeof(MindTarget).GetUpdateClause((p) => (new string[] { "Target" }.Contains(p.Name)));
-            int rowsAffected = dbc.Execute(Statements<MindTarget>.GetUpdate(updatePart, @"Id=@Id"), MindTarget, null);
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                string updatePart = typeof(MindTarget).GetUpdateClause((p) => (new string[] { "Target" }.Contains(p.Name)));
+                result = dbc.Execute(Statements<MindTarget>.GetUpdate(updatePart, @"Id=@Id"), MindTarget, null);
+            }
+            return result;
         }
         //mindTrainedData
         public int InsertMindTrainedData(MindTrainedData MindTrainedData)
         {
-            //int rowsAffected = dbc.Insert<MindTrainedData>(MindTrainedData);
-            string sqlQuery = "INSERT INTO [dbo].[MindTrainedData]([Target],[Title],[Approved],[Details]) VALUES (@Target,@Title,@Approved,@Details)";
-            int rowsAffected = dbc.Execute(sqlQuery,
-                 new { MindTrainedData.Target , MindTrainedData.Title , MindTrainedData.Approved , MindTrainedData.Details });
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                string sqlQuery = "INSERT INTO [dbo].[MindTrainedData]([Target],[Title],[Approved],[Details]) VALUES (@Target,@Title,@Approved,@Details)";
+                result = dbc.Execute(sqlQuery,
+                     new { MindTrainedData.Target, MindTrainedData.Title, MindTrainedData.Approved, MindTrainedData.Details });
+            }
+            return result;
         }
         public int DeleteMindTrainedData(object MindTrainedData)
         {
-            int rowsAffected = dbc.Delete<MindTrainedData>(MindTrainedData);
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                result = dbc.Delete<MindTrainedData>(MindTrainedData);
+            }
+            return result;
         }
         public List<MindTrainedData> SelectMindTrainedData()
         {
-            return dbc.Select<MindTrainedData>().ToList();
+            List<MindTrainedData> result;
+            using (var dbc = DbConnection())
+            {
+                result = dbc.Select<MindTrainedData>().ToList();
+            }
+            return result;
         }
         public List<MindTrainedData> SelectMindTrainedData(object MindTrainedData)
         {
-            if (MindTrainedData == null || IsAll1stChildsNull(MindTrainedData))
+            List<MindTrainedData> result;
+            using (var dbc = DbConnection())
             {
-                return dbc.Select<MindTrainedData>().ToList();
+                if (MindTrainedData == null || IsAll1stChildsNull(MindTrainedData))
+                {
+                    result = dbc.Select<MindTrainedData>().ToList();
+                }
+                else
+                {
+                    result = dbc.Select<MindTrainedData>(MindTrainedData).ToList();
+                }
             }
-            else
-            {
-                return dbc.Select<MindTrainedData>(MindTrainedData).ToList();
-            }
+            return result;
         }
         public int UpdateMindTrainedData(object MindTrainedData)
         {
-            string updatePart = typeof(MindTrainedData).GetUpdateClause((p) => (new string[] { "Target", "Details", "Title", "Approved" }.Contains(p.Name)));
-            int rowsAffected = dbc.Execute(Statements<MindTrainedData>.GetUpdate(updatePart, @"Id=@Id"), MindTrainedData, null);
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                string updatePart = typeof(MindTrainedData).GetUpdateClause((p) => (new string[] { "Target", "Details", "Title", "Approved" }.Contains(p.Name)));
+                result = dbc.Execute(Statements<MindTrainedData>.GetUpdate(updatePart, @"Id=@Id"), MindTrainedData, null);
+            }
+            return result;
         }
         ////MindReceivedData
         public int InsertMindReceivedData(MindReceivedData MindReceivedData)
         {
-
-            //int rowsAffected = dbc.Insert<MindReceivedData>(MindReceivedData);
-            string sqlQuery = "INSERT INTO [dbo].[MindReceivedData]([MaxTarget],[Title],[Score],[Details]) VALUES (@MaxTarget,@Title,@Score,@Details)";
-            int rowsAffected = dbc.Execute(sqlQuery,
-                 new { MindReceivedData.MaxTarget, MindReceivedData.Title, MindReceivedData.Score, MindReceivedData.Details  });
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                string sqlQuery = "INSERT INTO [dbo].[MindReceivedData]([MaxTarget],[Title],[Score],[Details]) VALUES (@MaxTarget,@Title,@Score,@Details)";
+                result = dbc.Execute(sqlQuery,
+                     new { MindReceivedData.MaxTarget, MindReceivedData.Title, MindReceivedData.Score, MindReceivedData.Details });
+            }
+            return result;
         }
         public int DeleteMindReceivedData(object MindReceivedData)
         {
-            int rowsAffected = dbc.Delete<MindReceivedData>(MindReceivedData);
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                result = dbc.Delete<MindReceivedData>(MindReceivedData);
+            }
+            return result;
         }
         public List<MindReceivedData> SelectMindReceivedData()
         {
-            return dbc.Select<MindReceivedData>().ToList();
+            List<MindReceivedData> result;
+            using (var dbc = DbConnection())
+            {
+                result = dbc.Select<MindReceivedData>().ToList();
+            }
+            return result;
         }
         public List<MindReceivedData> SelectMindReceivedData(object MindReceivedData)
         {
-            if (MindReceivedData == null || IsAll1stChildsNull(MindReceivedData))
+            List<MindReceivedData> result;
+            using (var dbc = DbConnection())
             {
-                return dbc.Select<MindReceivedData>().ToList();
+                if (MindReceivedData == null || IsAll1stChildsNull(MindReceivedData))
+                {
+                    result = dbc.Select<MindReceivedData>().ToList();
+                }
+                else
+                {
+                    result = dbc.Select<MindReceivedData>(MindReceivedData).ToList();
+                }
             }
-            else
-            {
-                return dbc.Select<MindReceivedData>(MindReceivedData).ToList();
-            }
+            return result;
         }
         public int UpdateMindReceivedData(object MindReceivedData)
         {
-            string updatePart = typeof(MindReceivedData).GetUpdateClause((p) => (new string[] { "Details", "Title", "Score", "MaxTarget" }.Contains(p.Name)));
-            int rowsAffected = dbc.Execute(Statements<MindReceivedData>.GetUpdate(updatePart, @"Id=@Id"), MindReceivedData, null);
-            return rowsAffected;
+            int result;
+            using (var dbc = DbConnection())
+            {
+                string updatePart = typeof(MindReceivedData).GetUpdateClause((p) => (new string[] { "Details", "Title", "Score", "MaxTarget" }.Contains(p.Name)));
+                result = dbc.Execute(Statements<MindReceivedData>.GetUpdate(updatePart, @"Id=@Id"), MindReceivedData, null);
+            }
+            return result;
         }
 
 
@@ -138,7 +200,8 @@ namespace Data.ExternalStorage
                 }
                 else
                 {
-                    if (pi != null) {
+                    if (pi != null)
+                    {
                         return false;
                     }
                 }

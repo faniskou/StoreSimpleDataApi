@@ -1,9 +1,10 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 using StoreSimpleData.Interfaces;
-using StoreSimpleData.Implementation;
 using System.Configuration;
+using System.Data;
 
 namespace StoreData45
 {
@@ -17,7 +18,7 @@ namespace StoreData45
 
             // Register your types, for instance using the scoped lifestyle:
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
-            container.Register<IStoreSimpleData>(() => new StoreSimpleData.Implementation.StoreSimpleData(dbcon));
+            container.Register<IStoreSimpleData>(() => new StoreSimpleData.Implementation.StoreSimpleData(container.GetInstance<Func<IDbConnection>>()));
 
             // This is an extension method from the integration package.
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
