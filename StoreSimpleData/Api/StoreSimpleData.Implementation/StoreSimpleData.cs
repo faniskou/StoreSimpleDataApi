@@ -25,17 +25,17 @@ namespace StoreSimpleData.Implementation
         {
             return new AffectedResponse() { RowsAffected = db.DeleteMindTarget(MindDelete) };
         }
-        public AffectedResponse InsertMindReceivedData(MindReceivedDataInsert MindReceivedDataInsert)
+        public InsertSingleResponse InsertMindReceivedData(MindReceivedDataInsert MindReceivedDataInsert)
         {
-            return new AffectedResponse() { RowsAffected = db.InsertMindReceivedData(ConvertItTo.DBMindReceivedDataInsert(MindReceivedDataInsert)) };
+            return new InsertSingleResponse() { RowIdAffected = db.InsertMindReceivedData(ConvertItTo.DBMindReceivedDataInsert(MindReceivedDataInsert)) };
         }
-        public AffectedResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert)
+        public InsertSingleResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert)
         {
-            return new AffectedResponse() { RowsAffected = db.InsertMindTrainedData(ConvertItTo.DBMindTrainedDataInsert(MindTrainedDataInsert)) };
+            return new InsertSingleResponse() { RowIdAffected = db.InsertMindTrainedData(ConvertItTo.DBMindTrainedDataInsert(MindTrainedDataInsert)) };
         }
-        public AffectedResponse InsertMindTarget(MindTargetInsert MindTargetInsert)
+        public InsertSingleResponse InsertMindTarget(MindTargetInsert MindTargetInsert)
         {
-            return new AffectedResponse() { RowsAffected = db.InsertMindTarget(ConvertItTo.DBMindTargetInsert(MindTargetInsert)) };
+            return new InsertSingleResponse() { RowIdAffected = db.InsertMindTarget(ConvertItTo.DBMindTargetInsert(MindTargetInsert)) };
         }
         public MindReceivedDatasResponse SelectMindReceivedData()
         {

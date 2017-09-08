@@ -60,19 +60,19 @@ namespace StoreSimpleData.Controllers
         //inserts
         [ActionName("insertMindTarget")]
         [HttpPut]
-        public AffectedResponse InsertMindTarget(MindTargetInsert MindTargetInsert)
+        public InsertSingleResponse InsertMindTarget(MindTargetInsert MindTargetInsert)
         {
             return service.InsertMindTarget(MindTargetInsert);
         }
         [ActionName("insertMindTrainedData")]
         [HttpPut]
-        public AffectedResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert)
+        public InsertSingleResponse InsertMindTrainedData(MindTrainedDataInsert MindTrainedDataInsert)
         {
             return service.InsertMindTrainedData(MindTrainedDataInsert);
         }
         [ActionName("insertMindReceivedData")]
         [HttpPut]
-        public AffectedResponse InsertMindReceivedData(MindReceivedData MindReceivedDataInsert)
+        public InsertSingleResponse InsertMindReceivedData(MindReceivedData MindReceivedDataInsert)
         {
             return service.InsertMindReceivedData(MindReceivedDataInsert);
         }
@@ -93,7 +93,7 @@ namespace StoreSimpleData.Controllers
         [HttpPut]
         public AffectedResponse UpdateMindReceivedData(MindReceivedData MindReceivedData)
         {
-            return service.InsertMindReceivedData(MindReceivedData);
+            return service.UpdateMindReceivedData(MindReceivedData);
         }
         //deletes
         [ActionName("deleteMindTarget")]

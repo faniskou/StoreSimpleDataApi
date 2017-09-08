@@ -23,8 +23,8 @@ namespace Data.ExternalStorage
             int result;
             using (var dbc = DbConnection())
             {
-                string sqlQuery = "INSERT INTO [dbo].[MindTarget]([Target]) VALUES (@Target)";
-                result = dbc.Execute(sqlQuery, new { MindTarget.Target });
+                string sqlQuery = "INSERT INTO [dbo].[MindTarget]([Target]) OUTPUT Inserted.ID VALUES(@Target);";
+                result = dbc.Query<int>(sqlQuery, new { MindTarget.Target }).Single();
             }
             return result;
         }
@@ -78,9 +78,9 @@ namespace Data.ExternalStorage
             int result;
             using (var dbc = DbConnection())
             {
-                string sqlQuery = "INSERT INTO [dbo].[MindTrainedData]([Target],[Title],[Approved],[Details]) VALUES (@Target,@Title,@Approved,@Details)";
-                result = dbc.Execute(sqlQuery,
-                     new { MindTrainedData.Target, MindTrainedData.Title, MindTrainedData.Approved, MindTrainedData.Details });
+                string sqlQuery = "INSERT INTO [dbo].[MindTrainedData]([Target],[Title],[Approved],[Details]) OUTPUT Inserted.ID  VALUES (@Target,@Title,@Approved,@Details)";
+                result = dbc.Query<int>(sqlQuery,
+                     new { MindTrainedData.Target, MindTrainedData.Title, MindTrainedData.Approved, MindTrainedData.Details }).Single();
             }
             return result;
         }
@@ -134,9 +134,9 @@ namespace Data.ExternalStorage
             int result;
             using (var dbc = DbConnection())
             {
-                string sqlQuery = "INSERT INTO [dbo].[MindReceivedData]([MaxTarget],[Title],[Score],[Details]) VALUES (@MaxTarget,@Title,@Score,@Details)";
-                result = dbc.Execute(sqlQuery,
-                     new { MindReceivedData.MaxTarget, MindReceivedData.Title, MindReceivedData.Score, MindReceivedData.Details });
+                string sqlQuery = "INSERT INTO [dbo].[MindReceivedData]([MaxTarget],[Title],[Score],[Details]) OUTPUT Inserted.ID VALUES (@MaxTarget,@Title,@Score,@Details)";
+                result = dbc.Query<int>(sqlQuery,
+                     new { MindReceivedData.MaxTarget, MindReceivedData.Title, MindReceivedData.Score, MindReceivedData.Details }).Single();
             }
             return result;
         }

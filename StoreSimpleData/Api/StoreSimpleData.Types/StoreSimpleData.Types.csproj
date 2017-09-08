@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InsertSingleResponse.cs" />
     <Compile Include="MindReceivedDataInsert.cs" />
     <Compile Include="MindReceivedDatasResponse.cs" />
     <Compile Include="MindTargetInsert.cs" />
