@@ -5,6 +5,7 @@ using SimpleInjector.Integration.WebApi;
 using StoreSimpleData.Interfaces;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace StoreData45
 {
@@ -18,6 +19,13 @@ namespace StoreData45
 
             // Register your types, for instance using the scoped lifestyle:
             string dbcon = ConfigurationManager.AppSettings["Dbcon"];
+            Func<IDbConnection> apiConnection = () =>
+            {
+                var connection = new SqlConnection(dbcon);
+                connection.Open();
+                return connection;
+            };
+            container.Register(() => apiConnection, Lifestyle.Singleton);
             container.Register<IStoreSimpleData>(() => new StoreSimpleData.Implementation.StoreSimpleData(container.GetInstance<Func<IDbConnection>>()));
 
             // This is an extension method from the integration package.
